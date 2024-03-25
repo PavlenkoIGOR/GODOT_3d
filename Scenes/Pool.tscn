@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2jyxltpql8pm"]
+
+[ext_resource type="PackedScene" uid="uid://b61e3eb6ixhpg" path="res://Models/Pool.fbx" id="1_6xrfy"]
+
+[node name="Root Scene" instance=ExtResource("1_6xrfy")]
+
+[node name="Box002" parent="RootNode" index="0"]
+layers = 49

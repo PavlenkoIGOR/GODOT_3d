@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://col082ah2nd5j"]
+
+[ext_resource type="PackedScene" uid="uid://c5g446odjqou6" path="res://Scenes/SpaceRobotKyle/Models/KyleRobot.fbx" id="1_57qrl"]
+[ext_resource type="Texture2D" uid="uid://b1q0vk1a4p4w" path="res://Scenes/SpaceRobotKyle/Textures/KyleRobot_BaseMap.png" id="2_cjdrk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4i2aj"]
+albedo_texture = ExtResource("2_cjdrk")
+
+[node name="Root Scene" instance=ExtResource("1_57qrl")]
+
+[node name="RobotKile" parent="RootNode/ROOT/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_4i2aj")

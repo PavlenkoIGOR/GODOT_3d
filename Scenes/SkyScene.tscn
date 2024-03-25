@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://celj847hkot3k"]
+
+[sub_resource type="Shader" id="Shader_l452g"]
+code = "shader_type sky;
+
+uniform vec4 sky_color : source_color;
+
+void sky() {
+	// Called for every visible pixel in the sky background, as well as all pixels
+	// in the radiance cubemap.
+	COLOR = sky_color.rgb;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0iefe"]
+shader = SubResource("Shader_l452g")
+shader_parameter/sky_color = Color(0, 0.0352941, 0.270588, 1)
+
+[sub_resource type="Sky" id="Sky_2se2g"]
+sky_material = SubResource("ShaderMaterial_0iefe")
+
+[sub_resource type="Environment" id="Environment_uy6ll"]
+background_mode = 2
+background_energy_multiplier = 0.35
+sky = SubResource("Sky_2se2g")
+tonemap_white = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_h5tju"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_frm0p"]
+
+[node name="Sky" type="WorldEnvironment"]
+environment = SubResource("Environment_uy6ll")
+
+[node name="SunMoon" type="Node3D" parent="."]
+transform = Transform3D(0.856195, 0.516653, 0, -0.516653, 0.856195, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sun" type="MeshInstance3D" parent="SunMoon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+mesh = SubResource("SphereMesh_h5tju")
+
+[node name="SunLight" type="DirectionalLight3D" parent="SunMoon/Sun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 0.992157, 0.941176, 1)
+shadow_enabled = true
+shadow_blur = 2.393
+
+[node name="Moon" type="MeshInstance3D" parent="SunMoon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+mesh = SubResource("SphereMesh_frm0p")
+
+[node name="MoonLight" type="DirectionalLight3D" parent="SunMoon/Moon"]
+light_energy = 0.0
