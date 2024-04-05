@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://b47jk58266qm7"]
+
+[ext_resource type="PackedScene" uid="uid://cqc8jusmrk243" path="res://Models/fireholder.fbx" id="1_o8da1"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dmxjx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdliy"]
+next_pass = SubResource("ParticleProcessMaterial_dmxjx")
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.988235, 0.67451, 0.745098, 1)
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_kl3b7"]
+material = SubResource("StandardMaterial3D_hdliy")
+
+[sub_resource type="Curve" id="Curve_5k3ca"]
+_data = [Vector2(0, 0.790955), 0.0, 0.0, 0, 0, Vector2(0.0365535, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.111558), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_gm8ne"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.537255, 0.301961, 1)
+
+[node name="Fireholder" type="Node3D"]
+
+[node name="Root Scene" parent="." instance=ExtResource("1_o8da1")]
+transform = Transform3D(0.16, 0, 0, 0, 0.16, 0, 0, 0, 0.16, 0, 0, 0)
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2583, 0)
+amount = 200
+lifetime = 0.3
+randomness = 1.0
+local_coords = true
+draw_order = 2
+mesh = SubResource("QuadMesh_kl3b7")
+emission_shape = 4
+emission_points = PackedVector3Array()
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+angular_velocity_max = 40.0
+damping_max = 60.0
+angle_max = 360.0
+scale_amount_min = 0.1
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_5k3ca")
+color = Color(0.698039, 0.278431, 0, 1)
+color_initial_ramp = SubResource("Gradient_gm8ne")
