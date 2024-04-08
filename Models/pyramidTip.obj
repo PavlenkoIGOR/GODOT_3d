@@ -1,0 +1,23 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 23.02.2024 22:35:20
+
+#
+# object Pyramid001
+#
+
+v  3.8386 12.0079 3.8386
+v  0.0000 19.6850 -0.0000
+v  -3.8386 12.0079 3.8386
+v  3.8386 12.0079 -3.8386
+v  -3.8386 12.0079 -3.8386
+# 5 vertices
+
+o Pyramid001
+g Pyramid001
+f 1 2 3 
+f 1 4 2 
+f 2 5 3 
+f 2 4 5 
+f 1 3 5 4 
+# 1 polygons - 4 triangles
+
